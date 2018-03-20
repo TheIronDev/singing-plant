@@ -6,4 +6,4 @@ I have no affiliation with Plants vs Zombies, or Popcap games, I'm just making t
 
 ## LICENSE
 
-MIT license, see [./LICENSE]()
+MIT license, see [LICENSE](./LICENSE)
