@@ -7,8 +7,20 @@ const analyser = audioContext.createAnalyser();
 const bufferLength = analyser.frequencyBinCount;
 const dataArray = new Uint8Array(bufferLength);
 
+function getUserMedia() {
+  return new Promise((resolve, reject) => {
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({audio: true}).then((mediaStream) => {
+        resolve(mediaStream);
+      });
+      return;
+    }
 
-navigator.mediaDevices.getUserMedia({audio: true}).then((mediaStream) => {
+    navigator.getUserMedia({audio: true}, resolve, reject);
+  });
+}
+
+getUserMedia().then((mediaStream) => {
   const streamNode = audioContext.createMediaStreamSource(mediaStream);
   streamNode.connect(analyser);
   analyser.getByteFrequencyData(dataArray);
