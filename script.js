@@ -1,7 +1,8 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-const audioContext = new AudioContext();
+const AContext = (window.AudioContext || window.webkitAudioContext);
+const audioContext = new AContext();
 const analyser = audioContext.createAnalyser();
 const bufferLength = analyser.frequencyBinCount;
 const dataArray = new Uint8Array(bufferLength);
@@ -69,7 +70,7 @@ function drawMouth(x, y, avgFrequency) {
   const mouthOpenAdjustment = 30;
   const mouthTop = y + 15;
   const mouthTopOffset = 15;
-  const mouthPercent = Math.max(avgFrequency - 10, 0) / 64;
+  const mouthPercent = Math.min(Math.max(avgFrequency - 5, 0) / 64, 1);
   const mouthOpen = mouthTop + mouthTopOffset + mouthOpenAdjustment * mouthPercent;
 
   // Dimples
