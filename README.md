@@ -1,4 +1,4 @@
-# Singing Plant
+# Singing Sunflower
 
 This is a fan-made creation attempting to recreate the singling sun flowers from plants vs zombies.
 
