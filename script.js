@@ -12,6 +12,7 @@ navigator.mediaDevices.getUserMedia({audio: true}).then((mediaStream) => {
   const streamNode = audioContext.createMediaStreamSource(mediaStream);
   streamNode.connect(analyser);
   analyser.getByteFrequencyData(dataArray);
+  audioContext.resume();
 });
 
 function drawStem(x, y) {
